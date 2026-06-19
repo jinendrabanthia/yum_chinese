@@ -8,6 +8,15 @@ import { useCartStore } from "@/store/cartStore";
 
 const CATEGORIES = ["Starters", "Dim Sum", "Woks", "Yoo Amigoes Fusion", "Drinks"];
 
+interface MenuItem {
+  id: number;
+  name: string;
+  desc: string;
+  price: number;
+  img: string;
+  category: string;
+}
+
 const YUM_ITEMS = [
   { id: 1, name: "Chicken Butter Masala", desc: "Classic rich tomato gravy, tender chicken.", price: 450, img: "/gallery-1.jpg", category: "Woks" },
   { id: 2, name: "Chicken Hakka Noodles", desc: "Wok-tossed fresh noodles.", price: 250, img: "/gallery-2.jpg", category: "Woks" },
@@ -101,7 +110,7 @@ export function MenuInterface() {
   );
 }
 
-function FoodCard({ item, index, accent }: { item: any, index: number, accent: string }) {
+function FoodCard({ item, index, accent }: { item: MenuItem, index: number, accent: string }) {
   const addItem = useCartStore((state) => state.addItem);
 
   return (

@@ -14,6 +14,7 @@ export function Header() {
   const totalItems = useCartStore((state) => state.getTotalItems());
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     // Get table from URL parameter
     const searchParams = new URLSearchParams(window.location.search);
