@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #0b0c10;
+  --color-obsidian-light: #1f2833;
+  --color-crimson: #ff003c;
+  --color-sunset: #ff4500;
+  --color-teal: #00d2ff;
+  
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #fdfdfd;
+    --foreground: #111111;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.05);
+    --glass-shadow: rgba(0, 0, 0, 0.05);
+    --text-gradient-start: #000000;
+    --text-gradient-end: #666666;
+  }
+  
+  .dark {
+    --background: var(--color-obsidian);
+    --foreground: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: rgba(0, 0, 0, 0.3);
+    --text-gradient-start: #ffffff;
+    --text-gradient-end: #9ca3af;
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl;
+  }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-lg transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply bg-white/10 border-white/20 shadow-2xl -translate-y-1;
+  }
+
+  .text-gradient-yum {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, var(--text-gradient-start), var(--text-gradient-end));
+  }
+
+  .text-gradient-amigoes {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[--color-sunset] to-[--color-teal];
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
