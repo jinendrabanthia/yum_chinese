@@ -12,13 +12,13 @@ export function OrderBottomSheet() {
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const table = searchParams.get("table");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (table) setTableNumber(table);
   }, []);
 
-  const { items: cartItems, getSubtotal, getTotalItems, removeItem } = useCartStore();
+  const { items: cartItems, getSubtotal, removeItem } = useCartStore();
 
   const subtotal = getSubtotal();
-  const totalItems = getTotalItems();
   const taxes = Math.round(subtotal * 0.05); // 5% GST
   const serviceCharge = Math.round(subtotal * 0.10); // 10% Service Charge
   const total = subtotal > 0 ? subtotal + taxes + serviceCharge : 0;
